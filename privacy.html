@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Confidentialité — Episode Sentinel</title>
+  <meta name="description" content="Aucune télémétrie. Données en local. Permissions minimales.">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <div class="brand">
+        <i class="fa-solid fa-bell"></i><span>Episode Sentinel</span><small class="badge">MV3</small>
+      </div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap section-narrow policy">
+      <h2>Confidentialité</h2>
+      <p><b>Aucune télémétrie.</b> L’extension n’envoie aucune donnée personnelle vers un serveur tiers.</p>
+      <p><b>Données en local.</b> Liste suivie, réglages et “vus” sont stockés dans votre navigateur (<code>chrome.storage.local</code>).</p>
+      <p><b>Permissions minimales.</b> Stockage, alarmes (vérifications), notifications système, lecture du domaine VoirAnime pour détecter les épisodes.</p>
+      <p><b>Export/Import.</b> Exportez et restaurez vos données depuis l’interface.</p>
+      <p><b>Images.</b> Posters chargés via <em>fetch→blob</em> (anti-hotlink).</p>
+      <p><b>Contact.</b> Un bug ? Une idée ? <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Formulaire</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="cta" style="justify-content:center;">
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer</a>
+      </div>
+      <p class="note">© <span id="y"></span> Episode Sentinel</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

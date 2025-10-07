@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Anime Episode Tracker — Extension Chrome</title>
+  <meta name="description" content="Ne ratez plus aucun épisode. Alertes VF/VOSTFR. Simples. Précises. Élégantes.">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+  <meta property="og:title" content="Anime Episode Tracker — Extension Chrome">
+  <meta property="og:description" content="Alertes d’épisodes en temps réel. VF/VOSTFR, multi-saisons, badges +N.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta property="og:image" content="#">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <div class="brand">
+        <i class="fa-solid fa-bell"></i>
+        <span>Anime Episode Tracker</span>
+        <small class="badge">MV3</small>
+      </div>
+      <nav class="nav">
+        <a class="btn ghost" href="roadmap.html"><i class="fa-solid fa-road"></i> Roadmap</a>
+        <a class="btn ghost" href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Confidentialité</a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <h1 class="h1">Ne ratez plus aucun épisode.</h1>
+    <p class="sub">Alertes VF/VOSTFR en temps réel. Multi-saisons. <span class="badgeN">+7</span> visuel. Injection native sur VoirAnime.</p>
+    <div class="cta">
+      <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer sur Chrome</a>
+      <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Signaler un bug</a>
+      <!-- Masqués si vides (config.js) -->
+      <a class="btn ghost" data-href="github" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a class="btn ghost" data-href="discord" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Discord</a>
+    </div>
+    <p class="note">Zéro tracking • Données en local</p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Fonctionnalités</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Alertes instantanées</h3>
+          <p>Notification dès publication d’un nouvel épisode (VF, VOSTFR ou les deux).</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Multi-saisons</h3>
+          <p>Indexation VF & VOSTFR sur toutes les saisons, notation <b>SxEy</b> + dates.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-circle-plus"></i></div>
+          <h3>Badges <span class="badgeN">+N</span></h3>
+          <p>Backlog visuel, masquable par carte, persistant localement.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-rotate"></i></div>
+          <h3>“Tout rafraîchir”</h3>
+          <p>Grise les boutons pendant le scan et les réactive à la fin réelle.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-language"></i></div>
+          <h3>i18n & dates</h3>
+          <p>FR : jj/mm/aa HH:MM:SS • EN : short US. Zéro texte en dur.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-plug"></i></div>
+          <h3>Injection VoirAnime</h3>
+          <p>Bouton “Ajouter au Notifier” (saison/épisode) avec état persistant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Aperçus</h2>
+      <div class="shots">
+        <div id="shot_popup" class="shot">Popup</div>
+        <div id="shot_inject" class="shot">Injection</div>
+        <div id="shot_settings" class="shot">Paramètres</div>
+        <div id="shot_notify" class="shot">Notification</div>
+      </div>
+      <p class="note">Remplace ces cadres par tes captures via <code>js/config.js</code>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="cta" style="justify-content:center;">
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer</a>
+        <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Signaler un bug</a>
+      </div>
+      <p class="note">© <span id="y"></span> Anime Episode Tracker — Non affilié à VoirAnime/MAL</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
