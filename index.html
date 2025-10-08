@@ -19,9 +19,11 @@
   <header class="top">
     <div class="wrap bar">
       <div class="brand">
-        <i class="fa-solid fa-bell"></i>
-        <span>Anime Episode Tracker</span>
-        <small class="badge">MV3</small>
+        <img class="brand-logo" src="assets/icon-1024.png" alt="Logo Anime Episode Tracker" width="40" height="40" loading="lazy">
+        <div class="brand-text">
+          <span class="brand-title">Anime Episode Tracker</span>
+          <small class="badge">MV3</small>
+        </div>
       </div>
       <nav class="nav">
         <a class="btn ghost" href="roadmap.html"><i class="fa-solid fa-road"></i> Roadmap</a>
@@ -33,7 +35,7 @@
 
   <div class="wrap hero">
     <h1 class="h1">Ne ratez plus aucun épisode.</h1>
-    <p class="sub">Alertes VF/VOSTFR en temps réel. Multi-saisons. <span class="badgeN">+7</span> visuel. Injection native sur VoirAnime.</p>
+    <p class="sub">L’extension repère les nouveaux épisodes en VF et VOSTFR et vous prévient en quelques secondes. Pas de réglages compliqués : ouvrez vos sites habituels et suivez votre liste.</p>
     <div class="cta">
       <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> Installer sur Chrome</a>
       <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Signaler un bug</a>
@@ -44,6 +46,35 @@
     <p class="note">Zéro tracking • Données en local</p>
   </div>
 
+  <section class="providers">
+    <div class="wrap">
+      <h2>Sites pris en charge</h2>
+      <p class="providers-sub">Nous surveillons vos plateformes d’anime pour vous signaler les nouveautés. Voici ce qui est déjà prêt et ce qui arrive bientôt.</p>
+      <div class="providers-grid">
+        <article class="provider-card is-live">
+          <div class="provider-logo">
+            <img src="assets/providers/VoiAnimeLogo.ico" alt="Logo VoirAnime" width="80" height="80" loading="lazy">
+          </div>
+          <div class="provider-info">
+            <h3>VoirAnime</h3>
+            <span class="provider-status"><i class="fa-solid fa-circle-check"></i> Disponible</span>
+            <p>Un bouton “Suivre” apparaît directement sur VoirAnime et le badge <span class="badgeN">+N</span> indique les épisodes qu’il vous reste à regarder.</p>
+          </div>
+        </article>
+        <article class="provider-card is-soon">
+          <div class="provider-logo">
+            <img src="assets/providers/animesamaLogo.png" alt="Logo AnimeSama" width="80" height="80" loading="lazy">
+          </div>
+          <div class="provider-info">
+            <h3>AnimeSama</h3>
+            <span class="provider-status"><i class="fa-regular fa-hourglass-half"></i> En préparation</span>
+            <p>L’intégration AnimeSama arrive : notifications VF/VOSTFR et sauvegarde de votre progression sont en cours de finalisation.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <h2>Fonctionnalités</h2>
@@ -51,32 +82,32 @@
         <div class="card">
           <div class="icon"><i class="fa-solid fa-bolt"></i></div>
           <h3>Alertes instantanées</h3>
-          <p>Notification dès publication d’un nouvel épisode (VF, VOSTFR ou les deux).</p>
+          <p>Notification dès qu’un nouvel épisode sort en VF ou en VOSTFR. Vous savez tout de suite quoi regarder.</p>
         </div>
         <div class="card">
           <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
-          <h3>Multi-saisons</h3>
-          <p>Indexation VF & VOSTFR sur toutes les saisons, notation <b>SxEy</b> + dates.</p>
+          <h3>Toutes vos saisons</h3>
+          <p>L’extension garde la trace de chaque saison automatiquement : aucun tableau à maintenir, juste vos séries à jour.</p>
         </div>
         <div class="card">
           <div class="icon"><i class="fa-solid fa-circle-plus"></i></div>
           <h3>Badges <span class="badgeN">+N</span></h3>
-          <p>Backlog visuel, masquable par carte, persistant localement.</p>
+          <p>Le badge <span class="badgeN">+N</span> montre le nombre d’épisodes en retard. Vous pouvez le masquer quand vous êtes à jour.</p>
         </div>
         <div class="card">
           <div class="icon"><i class="fa-solid fa-rotate"></i></div>
-          <h3>“Tout rafraîchir”</h3>
-          <p>Grise les boutons pendant le scan et les réactive à la fin réelle.</p>
+          <h3>Rafraîchissement simple</h3>
+          <p>Un clic met toutes les fiches à jour. Le bouton se grise le temps du scan pour vous montrer qu’il travaille.</p>
         </div>
         <div class="card">
           <div class="icon"><i class="fa-solid fa-language"></i></div>
-          <h3>i18n & dates</h3>
-          <p>FR : jj/mm/aa HH:MM:SS • EN : short US. Zéro texte en dur.</p>
+          <h3>Langues et dates claires</h3>
+          <p>Les textes s’adaptent en français ou en anglais et les dates sont affichées au bon format automatiquement.</p>
         </div>
         <div class="card">
           <div class="icon"><i class="fa-solid fa-plug"></i></div>
-          <h3>Injection VoirAnime</h3>
-          <p>Bouton “Ajouter au Notifier” (saison/épisode) avec état persistant.</p>
+          <h3>Intégration VoirAnime</h3>
+          <p>Un bouton “Ajouter” apparaît sur les fiches VoirAnime pour suivre un anime sans quitter la page.</p>
         </div>
       </div>
     </div>
