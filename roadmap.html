@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Roadmap — Episode Sentinel</title>
-  <meta name="description" content="Roadmap simple et visuelle : ce qui arrive maintenant, ensuite et plus tard.">
+  <title data-i18n="roadmap_meta_title">Roadmap — Anime Episode Tracker</title>
+  <meta name="description" content="Roadmap simple et visuelle : ce qui arrive maintenant, ensuite et plus tard." data-i18n="roadmap_meta_description" data-i18n-attr="content">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/style.css" />
@@ -14,164 +14,162 @@
   <header class="top">
     <div class="wrap bar">
       <div class="brand">
-        <img class="brand-logo" src="assets/icon-1024.png" alt="Logo Episode Sentinel" width="40" height="40" loading="lazy">
+        <img class="brand-logo" src="assets/icon-1024.png" alt="Logo Anime Episode Tracker" width="40" height="40" loading="lazy">
         <div class="brand-text">
-          <span class="brand-title">Episode Sentinel</span>
+          <span class="brand-title" data-i18n="brand_title">Anime Episode Tracker</span>
           <small class="badge">MV3</small>
         </div>
       </div>
       <nav class="nav">
-        <a class="btn ghost" href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
-        <a class="btn ghost" href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Confidentialité</a>
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener">
-          <i class="fa-brands fa-chrome"></i> Installer
-        </a>
+        <a class="btn ghost" href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Accueil</span></a>
+        <a class="btn ghost" href="privacy.html"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav_privacy">Confidentialité</span></a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
+        <label class="lang-switch">
+          <span class="sr-only" data-i18n="lang_switch_label">Langue</span>
+          <select data-lang-switcher>
+            <option value="fr" data-i18n="lang_option_fr">Français</option>
+            <option value="en" data-i18n="lang_option_en">English</option>
+          </select>
+        </label>
       </nav>
     </div>
   </header>
 
   <section class="road-visual">
     <div class="wrap section-narrow">
-      <h2 style="text-align:center; font-size:26px; margin:6px 0 8px;">Ce qui arrive</h2>
+      <h1 class="h1" data-i18n="roadmap_title">Ce qui arrive</h1>
+      <p class="road-lead" data-i18n="roadmap_intro">Une vue claire sur les fonctionnalités en cours, celles qui arrivent ensuite et les idées sur lesquelles nous itérons.</p>
       <div class="road-legend">
-        <span><span class="dot dot-now"></span> Now</span>
-        <span><span class="dot dot-next"></span> Next</span>
-        <span><span class="dot dot-later"></span> Later</span>
+        <span><span class="dot dot-now"></span> <span data-i18n="roadmap_legend_now">Now</span></span>
+        <span><span class="dot dot-next"></span> <span data-i18n="roadmap_legend_next">Next</span></span>
+        <span><span class="dot dot-later"></span> <span data-i18n="roadmap_legend_later">Later</span></span>
       </div>
-      <div class="qchips">
-        <span class="qchip">Q4 2025</span>
-        <span class="qchip">Q1 2026</span>
-        <span class="qchip">Q2 2026</span>
+      <div class="road-filters" data-road-filters>
+        <button class="chip is-active" type="button" data-road-filter="all"><span data-i18n="roadmap_filter_all">Tout</span></button>
+        <button class="chip" type="button" data-road-filter="now"><span data-i18n="roadmap_filter_now">Now</span></button>
+        <button class="chip" type="button" data-road-filter="next"><span data-i18n="roadmap_filter_next">Next</span></button>
+        <button class="chip" type="button" data-road-filter="later"><span data-i18n="roadmap_filter_later">Later</span></button>
       </div>
+    </div>
 
+    <div class="wrap">
       <div class="road-grid">
-        <!-- NOW -->
-        <article class="road-card">
+        <article class="road-card" data-road-status="now">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">⚡</span><span>Plus fluide au quotidien</span></div>
-            <span class="pill now">Now</span>
+            <div class="road-title"><span class="emoji">⚡</span><span data-i18n="roadmap_now_speed_title">Plus fluide au quotidien</span></div>
+            <span class="pill now" data-i18n="roadmap_now_label">Now</span>
           </div>
-          <p class="road-desc">Ouvertures rapides, retours visuels propres, tout reste clair pendant les rafraîchissements.</p>
+          <p class="road-desc" data-i18n="roadmap_now_speed_desc">Ouvertures rapides, retours visuels propres, tout reste clair pendant les rafraîchissements.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-rotate"></i><span>“Tout rafraîchir” lisible du début à la fin</span></div>
-            <div class="road-point"><i class="fa-solid fa-hourglass-half"></i><span>Animations homogènes sur les cartes</span></div>
-            <div class="road-point"><i class="fa-solid fa-eye"></i><span>États qui tiennent même en fermant le popup</span></div>
+            <div class="road-point"><i class="fa-solid fa-rotate"></i><span data-i18n="roadmap_now_speed_point1">“Tout rafraîchir” lisible du début à la fin</span></div>
+            <div class="road-point"><i class="fa-solid fa-hourglass-half"></i><span data-i18n="roadmap_now_speed_point2">Animations homogènes sur les cartes</span></div>
+            <div class="road-point"><i class="fa-solid fa-eye"></i><span data-i18n="roadmap_now_speed_point3">États qui tiennent même en fermant le popup</span></div>
           </div>
-          <div class="progress" title="Avancement estimé">
-            <span style="--p:68%"></span>
-          </div>
+          <div class="progress" title="Avancement estimé" data-i18n="roadmap_progress_estimate" data-i18n-attr="title"><span style="--p:68%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="now">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🧰</span><span>Import / Export plus simple</span></div>
-            <span class="pill now">Now</span>
+            <div class="road-title"><span class="emoji">🧰</span><span data-i18n="roadmap_now_import_title">Import / Export plus simple</span></div>
+            <span class="pill now" data-i18n="roadmap_now_label">Now</span>
           </div>
-          <p class="road-desc">Importer, fusionner et retrouver facilement vos séries, sans prise de tête.</p>
+          <p class="road-desc" data-i18n="roadmap_now_import_desc">Importer, fusionner et retrouver facilement vos séries, sans prise de tête.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-file-arrow-up"></i><span>Glisser-déposer</span></div>
-            <div class="road-point"><i class="fa-solid fa-layer-group"></i><span>Fusion claire des doublons</span></div>
-            <div class="road-point"><i class="fa-solid fa-circle-check"></i><span>Restauration sereine</span></div>
+            <div class="road-point"><i class="fa-solid fa-file-arrow-up"></i><span data-i18n="roadmap_now_import_point1">Glisser-déposer</span></div>
+            <div class="road-point"><i class="fa-solid fa-layer-group"></i><span data-i18n="roadmap_now_import_point2">Fusion claire des doublons</span></div>
+            <div class="road-point"><i class="fa-solid fa-circle-check"></i><span data-i18n="roadmap_now_import_point3">Restauration sereine</span></div>
           </div>
-          <div class="progress" title="Avancement estimé">
-            <span style="--p:42%"></span>
-          </div>
+          <div class="progress" title="Avancement estimé" data-i18n="roadmap_progress_estimate" data-i18n-attr="title"><span style="--p:42%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="now">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🎯</span><span>Badges <span class="badgeN">+N</span> plus visibles</span></div>
-            <span class="pill now">Now</span>
+            <div class="road-title"><span class="emoji">🎯</span><span data-i18n="roadmap_now_badge_title">Badges <span class="badgeN">+N</span> plus visibles</span></div>
+            <span class="pill now" data-i18n="roadmap_now_label">Now</span>
           </div>
-          <p class="road-desc">Un coup d’œil suffit : ce qui est nouveau ressort immédiatement.</p>
+          <p class="road-desc" data-i18n="roadmap_now_badge_desc">Un coup d’œil suffit : ce qui est nouveau ressort immédiatement.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-sparkles"></i><span>Effet premium discret</span></div>
-            <div class="road-point"><i class="fa-solid fa-toggle-on"></i><span>Masquage par carte, qui persiste</span></div>
+            <div class="road-point"><i class="fa-solid fa-sparkles"></i><span data-i18n="roadmap_now_badge_point1">Effet premium discret</span></div>
+            <div class="road-point"><i class="fa-solid fa-toggle-on"></i><span data-i18n="roadmap_now_badge_point2">Masquage par carte, qui persiste</span></div>
           </div>
-          <div class="progress" title="Avancement estimé">
-            <span style="--p:75%"></span>
-          </div>
+          <div class="progress" title="Avancement estimé" data-i18n="roadmap_progress_estimate" data-i18n-attr="title"><span style="--p:75%"></span></div>
         </article>
 
-        <!-- NEXT -->
-        <article class="road-card">
+        <article class="road-card" data-road-status="next">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🌐</span><span>AnimeSama</span></div>
-            <span class="pill next">Next</span>
+            <div class="road-title"><span class="emoji">🌐</span><span data-i18n="roadmap_next_animesama_title">AnimeSama</span></div>
+            <span class="pill next" data-i18n="roadmap_next_label">Next</span>
           </div>
-          <p class="road-desc">Ajouter, suivre et recevoir les alertes depuis AnimeSama, aussi simplement que sur VoirAnime.</p>
+          <p class="road-desc" data-i18n="roadmap_next_animesama_desc">L’intégration AnimeSama arrive : notifications VF/VOSTFR/VA et suivi complet de votre progression.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-layer-group"></i><span>Saisons reconnues automatiquement</span></div>
-            <div class="road-point"><i class="fa-solid fa-bell"></i><span>Notifications VF / VOSTFR</span></div>
-            <div class="road-point"><i class="fa-solid fa-link"></i><span>Passer S1 ⇄ S2 sans perdre le fil</span></div>
+            <div class="road-point"><i class="fa-solid fa-layer-group"></i><span data-i18n="roadmap_next_animesama_point1">Saisons reconnues automatiquement</span></div>
+            <div class="road-point"><i class="fa-solid fa-bell"></i><span data-i18n="roadmap_next_animesama_point2">Notifications VF / VOSTFR / VA</span></div>
+            <div class="road-point"><i class="fa-solid fa-link"></i><span data-i18n="roadmap_next_animesama_point3">Passer S1 ⇄ S2 sans perdre le fil</span></div>
           </div>
-          <div class="progress" title="Démarrage prévu">
-            <span style="--p:10%"></span>
-          </div>
+          <div class="progress" title="Démarrage prévu" data-i18n="roadmap_progress_start" data-i18n-attr="title"><span style="--p:10%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="next">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🌍</span><span>FR / EN impeccables</span></div>
-            <span class="pill next">Next</span>
+            <div class="road-title"><span class="emoji">🌍</span><span data-i18n="roadmap_next_languages_title">FR / EN impeccables</span></div>
+            <span class="pill next" data-i18n="roadmap_next_label">Next</span>
           </div>
-          <p class="road-desc">Tout s’affiche proprement, avec des dates qui “sonnent juste” selon la langue choisie.</p>
+          <p class="road-desc" data-i18n="roadmap_next_languages_desc">Tout s’affiche proprement, avec des dates qui “sonnent juste” selon la langue choisie.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-a"></i><span>Textes FR & EN harmonisés</span></div>
-            <div class="road-point"><i class="fa-regular fa-clock"></i><span>Dates locales lisibles</span></div>
+            <div class="road-point"><i class="fa-solid fa-a"></i><span data-i18n="roadmap_next_languages_point1">Textes FR & EN harmonisés</span></div>
+            <div class="road-point"><i class="fa-regular fa-clock"></i><span data-i18n="roadmap_next_languages_point2">Dates locales lisibles</span></div>
           </div>
-          <div class="progress"><span style="--p:20%"></span></div>
+          <div class="progress" data-i18n="roadmap_progress_estimate" data-i18n-attr="title" title="Avancement estimé"><span style="--p:20%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="next">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🪄</span><span>Micro-interactions</span></div>
-            <span class="pill next">Next</span>
+            <div class="road-title"><span class="emoji">🪄</span><span data-i18n="roadmap_next_micro_title">Micro-interactions</span></div>
+            <span class="pill next" data-i18n="roadmap_next_label">Next</span>
           </div>
-          <p class="road-desc">Des transitions fines qui donnent une sensation de qualité sans en faire trop.</p>
+          <p class="road-desc" data-i18n="roadmap_next_micro_desc">Des transitions fines qui donnent une sensation de qualité sans en faire trop.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-regular fa-hand-pointer"></i><span>Hover/press élégants</span></div>
-            <div class="road-point"><i class="fa-regular fa-face-smile"></i><span>Feedback clair à chaque action</span></div>
+            <div class="road-point"><i class="fa-regular fa-hand-pointer"></i><span data-i18n="roadmap_next_micro_point1">Hover/press élégants</span></div>
+            <div class="road-point"><i class="fa-regular fa-face-smile"></i><span data-i18n="roadmap_next_micro_point2">Feedback clair à chaque action</span></div>
           </div>
-          <div class="progress"><span style="--p:15%"></span></div>
+          <div class="progress" data-i18n="roadmap_progress_estimate" data-i18n-attr="title" title="Avancement estimé"><span style="--p:15%"></span></div>
         </article>
 
-        <!-- LATER -->
-        <article class="road-card">
+        <article class="road-card" data-road-status="later">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">📒</span><span>Notes & favoris</span></div>
-            <span class="pill later">Later</span>
+            <div class="road-title"><span class="emoji">📒</span><span data-i18n="roadmap_later_notes_title">Notes & favoris</span></div>
+            <span class="pill later" data-i18n="roadmap_later_label">Later</span>
           </div>
-          <p class="road-desc">Garder sous la main vos séries clés et un petit pense-bête par titre.</p>
+          <p class="road-desc" data-i18n="roadmap_later_notes_desc">Garder sous la main vos séries clés et un petit pense-bête par titre.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-regular fa-star"></i><span>Favoris en tête de liste</span></div>
-            <div class="road-point"><i class="fa-regular fa-note-sticky"></i><span>Mini-note par série</span></div>
+            <div class="road-point"><i class="fa-regular fa-star"></i><span data-i18n="roadmap_later_notes_point1">Favoris en tête de liste</span></div>
+            <div class="road-point"><i class="fa-regular fa-note-sticky"></i><span data-i18n="roadmap_later_notes_point2">Mini-note par série</span></div>
           </div>
-          <div class="progress"><span style="--p:5%"></span></div>
+          <div class="progress" data-i18n="roadmap_progress_estimate" data-i18n-attr="title" title="Avancement estimé"><span style="--p:5%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="later">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🔔</span><span>Rappels souples</span></div>
-            <span class="pill later">Later</span>
+            <div class="road-title"><span class="emoji">🔔</span><span data-i18n="roadmap_later_reminders_title">Rappels souples</span></div>
+            <span class="pill later" data-i18n="roadmap_later_label">Later</span>
           </div>
-          <p class="road-desc">Un rappel doux si vous avez manqué plusieurs sorties d’affilée.</p>
+          <p class="road-desc" data-i18n="roadmap_later_reminders_desc">Un rappel doux si vous avez manqué plusieurs sorties d’affilée.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-regular fa-bell"></i><span>Rappel ponctuel, pas envahissant</span></div>
+            <div class="road-point"><i class="fa-regular fa-bell"></i><span data-i18n="roadmap_later_reminders_point1">Rappel ponctuel, pas envahissant</span></div>
           </div>
-          <div class="progress"><span style="--p:0%"></span></div>
+          <div class="progress" data-i18n="roadmap_progress_estimate" data-i18n-attr="title" title="Avancement estimé"><span style="--p:0%"></span></div>
         </article>
 
-        <article class="road-card">
+        <article class="road-card" data-road-status="later">
           <div class="road-head">
-            <div class="road-title"><span class="emoji">🧭</span><span>Accueil personnalisé</span></div>
-            <span class="pill later">Later</span>
+            <div class="road-title"><span class="emoji">🧭</span><span data-i18n="roadmap_later_home_title">Accueil personnalisé</span></div>
+            <span class="pill later" data-i18n="roadmap_later_label">Later</span>
           </div>
-          <p class="road-desc">Un premier écran qui s’adapte à vos habitudes.</p>
+          <p class="road-desc" data-i18n="roadmap_later_home_desc">Un premier écran qui s’adapte à vos habitudes.</p>
           <div class="road-points">
-            <div class="road-point"><i class="fa-solid fa-compass"></i><span>Accès direct à l’essentiel</span></div>
+            <div class="road-point"><i class="fa-solid fa-compass"></i><span data-i18n="roadmap_later_home_point1">Accès direct à l’essentiel</span></div>
           </div>
-          <div class="progress"><span style="--p:0%"></span></div>
+          <div class="progress" data-i18n="roadmap_progress_estimate" data-i18n-attr="title" title="Avancement estimé"><span style="--p:0%"></span></div>
         </article>
       </div>
     </div>
@@ -180,16 +178,16 @@
   <footer>
     <div class="wrap">
       <div class="cta" style="justify-content:center;">
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener">
-          <i class="fa-brands fa-chrome"></i> Installer
-        </a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
       </div>
-      <p class="note">© <span id="y"></span> Episode Sentinel</p>
+      <p class="note">© <span id="y"></span> <span data-i18n="footer_note">Anime Episode Tracker — Non affilié à VoirAnime/MAL</span></p>
     </div>
   </footer>
 
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/provider-media-data.js"></script>
+  <script src="js/provider-media.js"></script>
   <script src="js/main.js"></script>
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
