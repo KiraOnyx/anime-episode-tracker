@@ -1,5 +1,6 @@
 (function () {
   const U = window.APP_URLS || {};
+  const MEDIA = window.MEDIA_MANIFEST || {};
 
   // Propager les href depuis data-href
   document.querySelectorAll("[data-href]").forEach(a => {
@@ -12,15 +13,64 @@
   });
 
   // Captures (si fournies)
-  const shots = {
-    shot_popup: "#shot_popup",
-    shot_inject: "#shot_inject",
-    shot_settings: "#shot_settings",
-    shot_notify: "#shot_notify"
+  const previewSelectors = {
+    popup: "#shot_popup",
+    injection: "#shot_inject",
+    settings: "#shot_settings",
+    notification: "#shot_notify"
   };
-  Object.entries(shots).forEach(([k, sel]) => {
-    const el = document.querySelector(sel);
-    if (el && U[k]) el.style.backgroundImage = `url('${U[k]}')`;
+  const previews = MEDIA.previews || {};
+  const previewBasePath = "assets/previews/";
+  const videoPreviewExt = [".mp4", ".webm", ".mov", ".m4v"];
+
+  const resolvePreviewSrc = (value) => {
+    if (!value) return "";
+    const trimmed = value.trim();
+    if (!trimmed) return "";
+    const isAbsolute = /^(?:[a-z]+:)?\/\//.test(trimmed) || trimmed.startsWith("/");
+    const hasExplicitPath = trimmed.startsWith("./") || trimmed.startsWith("../") || trimmed.startsWith("assets/");
+    if (isAbsolute || hasExplicitPath) return trimmed;
+    return `${previewBasePath}${trimmed}`;
+  };
+
+  const isVideoPreview = (value) => {
+    const lower = value.toLowerCase();
+    return videoPreviewExt.some(ext => lower.endsWith(ext));
+  };
+
+  Object.entries(previewSelectors).forEach(([key, selector]) => {
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    if (!el.dataset.originalLabel) {
+      el.dataset.originalLabel = el.textContent.trim();
+    }
+
+    const src = resolvePreviewSrc(previews[key]);
+    el.style.backgroundImage = "";
+    el.classList.remove("is-video-preview");
+    const existingVideo = el.querySelector("video");
+    if (existingVideo) existingVideo.remove();
+
+    if (!src) {
+      el.textContent = el.dataset.originalLabel || "";
+      return;
+    }
+
+    if (isVideoPreview(src)) {
+      el.textContent = "";
+      const video = document.createElement("video");
+      video.src = src;
+      video.muted = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      el.appendChild(video);
+      el.classList.add("is-video-preview");
+    } else {
+      el.textContent = "";
+      el.style.backgroundImage = `url('${src}')`;
+    }
   });
 
   // Open Graph dynamic fallback (facultatif)
