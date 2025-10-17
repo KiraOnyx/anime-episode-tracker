@@ -108,7 +108,18 @@
     if (emptyState) emptyState.hidden = false;
   };
 
-  fetch("assets/roadmap.json", { cache: "no-cache" })
+  const resolveAssetUrl = (path) => {
+    try {
+      if (typeof window.chrome?.runtime?.getURL === "function") {
+        return window.chrome.runtime.getURL(path);
+      }
+    } catch (err) {
+      // ignore and fall back to the relative URL below
+    }
+    return path;
+  };
+
+  fetch(resolveAssetUrl("assets/roadmap.json"), { cache: "no-cache" })
     .then(response => {
       if (!response.ok) throw new Error("HTTP" + response.status);
       return response.json();
