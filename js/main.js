@@ -90,16 +90,19 @@
   // Roadmap filters
   const roadFilters = document.querySelector("[data-road-filters]");
   if (roadFilters) {
-    const cards = Array.from(document.querySelectorAll(".road-card"));
     const buttons = Array.from(roadFilters.querySelectorAll("[data-road-filter]"));
+    let currentFilter = "all";
+
+    const getCards = () => Array.from(document.querySelectorAll(".road-card"));
 
     const applyFilter = (value) => {
+      currentFilter = value;
       buttons.forEach(btn => {
         const isActive = btn.dataset.roadFilter === value;
         btn.classList.toggle("is-active", isActive);
         btn.setAttribute("aria-pressed", String(isActive));
       });
-      cards.forEach(card => {
+      getCards().forEach(card => {
         const status = card.dataset.roadStatus;
         const show = value === "all" || status === value;
         card.style.display = show ? "" : "none";
@@ -114,6 +117,10 @@
     });
 
     applyFilter("all");
+
+    document.addEventListener("roadmap:updated", () => {
+      applyFilter(currentFilter);
+    });
   }
 
   const voirAnimeCard = document.querySelector("[data-provider-card='VoirAnime']");
