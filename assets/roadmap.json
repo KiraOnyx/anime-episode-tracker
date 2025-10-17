@@ -4,110 +4,332 @@
       "id": "now_speed",
       "status": "now",
       "emoji": "⚡",
-      "titleKey": "roadmap_now_speed_title",
-      "descriptionKey": "roadmap_now_speed_desc",
+      "title": {
+        "fr": "Plus fluide au quotidien",
+        "en": "Smoother everyday flow"
+      },
+      "description": {
+        "fr": "Ouvertures rapides, retours visuels propres, tout reste clair pendant les rafraîchissements.",
+        "en": "Faster openings, clean visual feedback, and clarity during refreshes."
+      },
       "points": [
-        { "icon": "fa-solid fa-rotate", "textKey": "roadmap_now_speed_point1" },
-        { "icon": "fa-solid fa-hourglass-half", "textKey": "roadmap_now_speed_point2" },
-        { "icon": "fa-solid fa-eye", "textKey": "roadmap_now_speed_point3" }
+        {
+          "icon": "fa-solid fa-rotate",
+          "text": {
+            "fr": "“Tout rafraîchir” lisible du début à la fin",
+            "en": "Readable “Refresh all” from start to finish"
+          }
+        },
+        {
+          "icon": "fa-solid fa-hourglass-half",
+          "text": {
+            "fr": "Animations homogènes sur les cartes",
+            "en": "Consistent card animations"
+          }
+        },
+        {
+          "icon": "fa-solid fa-eye",
+          "text": {
+            "fr": "États qui tiennent même en fermant le popup",
+            "en": "States persist even if you close the popup"
+          }
+        }
       ],
-      "progress": { "value": 68, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 68,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "now_import",
       "status": "now",
       "emoji": "🧰",
-      "titleKey": "roadmap_now_import_title",
-      "descriptionKey": "roadmap_now_import_desc",
+      "title": {
+        "fr": "Import / Export plus simple",
+        "en": "Easier import / export"
+      },
+      "description": {
+        "fr": "Importer, fusionner et retrouver facilement vos séries, sans prise de tête.",
+        "en": "Import, merge, and find your shows effortlessly."
+      },
       "points": [
-        { "icon": "fa-solid fa-file-arrow-up", "textKey": "roadmap_now_import_point1" },
-        { "icon": "fa-solid fa-layer-group", "textKey": "roadmap_now_import_point2" },
-        { "icon": "fa-solid fa-circle-check", "textKey": "roadmap_now_import_point3" }
+        {
+          "icon": "fa-solid fa-file-arrow-up",
+          "text": {
+            "fr": "Glisser-déposer",
+            "en": "Drag & drop"
+          }
+        },
+        {
+          "icon": "fa-solid fa-layer-group",
+          "text": {
+            "fr": "Fusion claire des doublons",
+            "en": "Clear duplicate merging"
+          }
+        },
+        {
+          "icon": "fa-solid fa-circle-check",
+          "text": {
+            "fr": "Restauration sereine",
+            "en": "Stress-free restores"
+          }
+        }
       ],
-      "progress": { "value": 42, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 42,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "now_badge",
       "status": "now",
       "emoji": "🎯",
-      "titleKey": "roadmap_now_badge_title",
-      "descriptionKey": "roadmap_now_badge_desc",
+      "title": {
+        "fr": "Badges <span class=\"badgeN\">+N</span> plus visibles",
+        "en": "Sharper <span class=\"badgeN\">+N</span> badges"
+      },
+      "description": {
+        "fr": "Un coup d’œil suffit : ce qui est nouveau ressort immédiatement.",
+        "en": "New episodes stand out at a glance."
+      },
       "points": [
-        { "icon": "fa-solid fa-sparkles", "textKey": "roadmap_now_badge_point1" },
-        { "icon": "fa-solid fa-toggle-on", "textKey": "roadmap_now_badge_point2" }
+        {
+          "icon": "fa-solid fa-sparkles",
+          "text": {
+            "fr": "Effet premium discret",
+            "en": "Subtle premium glow"
+          }
+        },
+        {
+          "icon": "fa-solid fa-toggle-on",
+          "text": {
+            "fr": "Masquage par carte, qui persiste",
+            "en": "Per-card hide option that sticks"
+          }
+        }
       ],
-      "progress": { "value": 75, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 75,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "next_animesama",
       "status": "next",
       "emoji": "🌐",
-      "titleKey": "roadmap_next_animesama_title",
-      "descriptionKey": "roadmap_next_animesama_desc",
+      "title": {
+        "fr": "AnimeSama",
+        "en": "AnimeSama"
+      },
+      "description": {
+        "fr": "L’intégration AnimeSama arrive : notifications VF/VOSTFR/VA et suivi complet de votre progression.",
+        "en": "AnimeSama integration is coming: VF/VOSTFR/VA notifications and full progress tracking."
+      },
       "points": [
-        { "icon": "fa-solid fa-layer-group", "textKey": "roadmap_next_animesama_point1" },
-        { "icon": "fa-solid fa-bell", "textKey": "roadmap_next_animesama_point2" },
-        { "icon": "fa-solid fa-link", "textKey": "roadmap_next_animesama_point3" }
+        {
+          "icon": "fa-solid fa-layer-group",
+          "text": {
+            "fr": "Saisons reconnues automatiquement",
+            "en": "Seasons detected automatically"
+          }
+        },
+        {
+          "icon": "fa-solid fa-bell",
+          "text": {
+            "fr": "Notifications VF / VOSTFR / VA",
+            "en": "VF / VOSTFR / VA alerts"
+          }
+        },
+        {
+          "icon": "fa-solid fa-link",
+          "text": {
+            "fr": "Passer S1 ⇄ S2 sans perdre le fil",
+            "en": "Jump S1 ⇄ S2 without losing context"
+          }
+        }
       ],
-      "progress": { "value": 10, "labelKey": "roadmap_progress_start" }
+      "progress": {
+        "value": 10,
+        "label": {
+          "fr": "Démarrage prévu",
+          "en": "Planned start"
+        }
+      }
     },
     {
       "id": "next_languages",
       "status": "next",
       "emoji": "🌍",
-      "titleKey": "roadmap_next_languages_title",
-      "descriptionKey": "roadmap_next_languages_desc",
+      "title": {
+        "fr": "FR / EN impeccables",
+        "en": "Polished FR / EN"
+      },
+      "description": {
+        "fr": "Tout s’affiche proprement, avec des dates qui “sonnent juste” selon la langue choisie.",
+        "en": "Everything lines up nicely with dates that “feel right” for the selected language."
+      },
       "points": [
-        { "icon": "fa-solid fa-a", "textKey": "roadmap_next_languages_point1" },
-        { "icon": "fa-regular fa-clock", "textKey": "roadmap_next_languages_point2" }
+        {
+          "icon": "fa-solid fa-a",
+          "text": {
+            "fr": "Textes FR & EN harmonisés",
+            "en": "Harmonised FR & EN wording"
+          }
+        },
+        {
+          "icon": "fa-regular fa-clock",
+          "text": {
+            "fr": "Dates locales lisibles",
+            "en": "Readable localised dates"
+          }
+        }
       ],
-      "progress": { "value": 20, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 20,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "next_micro",
       "status": "next",
       "emoji": "🪄",
-      "titleKey": "roadmap_next_micro_title",
-      "descriptionKey": "roadmap_next_micro_desc",
+      "title": {
+        "fr": "Micro-interactions",
+        "en": "Micro interactions"
+      },
+      "description": {
+        "fr": "Des transitions fines qui donnent une sensation de qualité sans en faire trop.",
+        "en": "Fine transitions for a premium feel without overdoing it."
+      },
       "points": [
-        { "icon": "fa-regular fa-hand-pointer", "textKey": "roadmap_next_micro_point1" },
-        { "icon": "fa-regular fa-face-smile", "textKey": "roadmap_next_micro_point2" }
+        {
+          "icon": "fa-regular fa-hand-pointer",
+          "text": {
+            "fr": "Hover/press élégants",
+            "en": "Elegant hover/press states"
+          }
+        },
+        {
+          "icon": "fa-regular fa-face-smile",
+          "text": {
+            "fr": "Feedback clair à chaque action",
+            "en": "Clear feedback on every action"
+          }
+        }
       ],
-      "progress": { "value": 15, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 15,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "later_notes",
       "status": "later",
       "emoji": "📒",
-      "titleKey": "roadmap_later_notes_title",
-      "descriptionKey": "roadmap_later_notes_desc",
+      "title": {
+        "fr": "Notes & favoris",
+        "en": "Notes & favourites"
+      },
+      "description": {
+        "fr": "Garder sous la main vos séries clés et un petit pense-bête par titre.",
+        "en": "Keep key shows close with a quick memo per title."
+      },
       "points": [
-        { "icon": "fa-regular fa-star", "textKey": "roadmap_later_notes_point1" },
-        { "icon": "fa-regular fa-note-sticky", "textKey": "roadmap_later_notes_point2" }
+        {
+          "icon": "fa-regular fa-star",
+          "text": {
+            "fr": "Favoris en tête de liste",
+            "en": "Pinned favourites at the top"
+          }
+        },
+        {
+          "icon": "fa-regular fa-note-sticky",
+          "text": {
+            "fr": "Mini-note par série",
+            "en": "Mini note per series"
+          }
+        }
       ],
-      "progress": { "value": 5, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 5,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "later_reminders",
       "status": "later",
       "emoji": "🔔",
-      "titleKey": "roadmap_later_reminders_title",
-      "descriptionKey": "roadmap_later_reminders_desc",
+      "title": {
+        "fr": "Rappels souples",
+        "en": "Gentle reminders"
+      },
+      "description": {
+        "fr": "Un rappel doux si vous avez manqué plusieurs sorties d’affilée.",
+        "en": "A soft nudge if you’ve missed several releases in a row."
+      },
       "points": [
-        { "icon": "fa-regular fa-bell", "textKey": "roadmap_later_reminders_point1" }
+        {
+          "icon": "fa-regular fa-bell",
+          "text": {
+            "fr": "Rappel ponctuel, pas envahissant",
+            "en": "Occasional reminder, never spammy"
+          }
+        }
       ],
-      "progress": { "value": 0, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 0,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     },
     {
       "id": "later_home",
       "status": "later",
       "emoji": "🧭",
-      "titleKey": "roadmap_later_home_title",
-      "descriptionKey": "roadmap_later_home_desc",
+      "title": {
+        "fr": "Accueil personnalisé",
+        "en": "Personalised home"
+      },
+      "description": {
+        "fr": "Un premier écran qui s’adapte à vos habitudes.",
+        "en": "A first screen tailored to your habits."
+      },
       "points": [
-        { "icon": "fa-solid fa-compass", "textKey": "roadmap_later_home_point1" }
+        {
+          "icon": "fa-solid fa-compass",
+          "text": {
+            "fr": "Accès direct à l’essentiel",
+            "en": "Direct access to what matters"
+          }
+        }
       ],
-      "progress": { "value": 0, "labelKey": "roadmap_progress_estimate" }
+      "progress": {
+        "value": 0,
+        "label": {
+          "fr": "Avancement estimé",
+          "en": "Progress estimate"
+        }
+      }
     }
   ]
 }
