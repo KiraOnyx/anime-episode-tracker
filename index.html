@@ -37,8 +37,8 @@
           <div class="nav-actions">
             <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
             <div class="nav-lang dropdown">
-              <button class="btn icon" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Langue" data-i18n="lang_switch_label" data-i18n-attr="aria-label">
-                <i class="fa-solid fa-language"></i>
+              <button class="btn lang-toggle" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Langue" data-i18n="lang_switch_label" data-i18n-attr="aria-label">
+                <i class="fa-solid fa-language" aria-hidden="true"></i>
                 <span id="lang-code" class="lang-code" aria-hidden="true">FR</span>
               </button>
               <ul class="menu" role="menu" aria-labelledby="lang-toggle">
@@ -57,7 +57,6 @@
     <p class="sub" data-i18n="hero_sub">L’extension repère les nouveaux épisodes en VF et VOSTFR et vous prévient en quelques secondes. Pas de réglages compliqués : ouvrez vos sites habituels et suivez votre liste.</p>
     <div class="cta">
       <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="hero_cta_install">Installer sur Chrome</span></a>
-      <a class="btn" data-href="feedback_bug" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="hero_cta_feedback">Signaler un bug</span></a>
       <a class="btn ghost" data-href="github" data-hide-when-empty><i class="fa-brands fa-github"></i> GitHub</a>
       <a class="btn ghost" data-href="discord" data-hide-when-empty><i class="fa-brands fa-discord"></i> Discord</a>
     </div>
@@ -163,9 +162,9 @@
     </header>
     <div class="actions">
       <a class="btn primary" data-href="feedback_bug" data-hide-when-empty
-         aria-label="" data-i18n="support_cta_bug_label" data-i18n-attr="aria-label"
-         target="_blank" rel="noopener">
-        <i class="fa-solid fa-bug"></i> <span data-i18n="support_cta_bug">Signaler un bug</span>
+         aria-label="Ouvrir le formulaire de signalement de bug" target="_blank" rel="noopener">
+        <i class="fa-solid fa-bug" aria-hidden="true"></i>
+        <span data-i18n="support_cta_bug">Signaler un bug</span>
       </a>
       <a class="btn ghost" data-href="feedback_ideas" data-hide-when-empty
          aria-label="" data-i18n="support_cta_ideas_label" data-i18n-attr="aria-label"

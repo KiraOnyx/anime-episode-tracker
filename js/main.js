@@ -26,6 +26,18 @@
     span.textContent = code;
   };
 
+  document.addEventListener("click", (event) => {
+    const item = event.target.closest(".lang-item");
+    if (!item) return;
+    const lang = item.getAttribute("data-lang");
+    if (!lang) return;
+    const api = window.AET_I18N || window.I18N;
+    if (api && typeof api.setLang === "function") {
+      api.setLang(lang);
+      updateLangIndicator();
+    }
+  });
+
   const translate = (key) => {
     try {
       if (window.AET_I18N && typeof window.AET_I18N.t === "function") {
