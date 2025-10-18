@@ -47,7 +47,7 @@
     <p class="sub" data-i18n="hero_sub">L’extension repère les nouveaux épisodes en VF et VOSTFR et vous prévient en quelques secondes. Pas de réglages compliqués : ouvrez vos sites habituels et suivez votre liste.</p>
     <div class="cta">
       <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="hero_cta_install">Installer sur Chrome</span></a>
-      <a class="btn" data-href="feedback_form" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="hero_cta_feedback">Signaler un bug</span></a>
+      <a class="btn" data-href="feedback_bug" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="hero_cta_feedback">Signaler un bug</span></a>
       <a class="btn ghost" data-href="github" data-hide-when-empty><i class="fa-brands fa-github"></i> GitHub</a>
       <a class="btn ghost" data-href="discord" data-hide-when-empty><i class="fa-brands fa-discord"></i> Discord</a>
     </div>
@@ -144,11 +144,36 @@
     </div>
   </section>
 
+  <section class="support-feedback container" aria-labelledby="support-title" data-hide-when-empty>
+    <header class="section-head">
+      <h2 id="support-title" data-i18n="support_title"><i class="fa-solid fa-circle-info"></i> Besoin d’un coup de main ?</h2>
+      <p data-i18n="support_intro">
+        Vous avez repéré un comportement suspect ou souhaitez un audit plus détaillé ? Dites-le nous en quelques clics.
+      </p>
+    </header>
+
+    <div class="actions">
+      <a class="btn primary" data-href="feedback_bug" data-hide-when-empty
+         aria-label="" data-i18n="support_cta_bug_label" data-i18n-attr="aria-label"
+         rel="noopener noreferrer" target="_blank">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span data-i18n="support_cta_bug">Signalement de bug</span>
+      </a>
+
+      <a class="btn ghost" data-href="feedback_ideas" data-hide-when-empty
+         aria-label="" data-i18n="support_cta_ideas_label" data-i18n-attr="aria-label"
+         rel="noopener noreferrer" target="_blank">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span data-i18n="support_cta_ideas">Suggestions & améliorations</span>
+      </a>
+    </div>
+  </section>
+
   <footer>
     <div class="wrap">
       <div class="cta" style="justify-content:center;">
         <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
-        <a class="btn" data-href="feedback_form" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="footer_feedback">Signaler un bug</span></a>
+        <a class="btn" data-href="feedback_bug" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="footer_feedback">Signaler un bug</span></a>
       </div>
       <p class="note">© <span id="y"></span> <span data-i18n="footer_note">Anime Episode Tracker — Non affilié à VoirAnime/MAL</span></p>
     </div>

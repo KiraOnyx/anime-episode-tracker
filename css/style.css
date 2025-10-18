@@ -120,6 +120,12 @@ h2{ font-size:22px; margin:0 0 14px; text-align:center; }
 .shot video{
   width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;
 }
+.support-feedback{ margin-block:3rem; }
+.support-feedback.container{ max-width:var(--maxw); margin-inline:auto; padding:48px 20px; border:1px solid var(--line); border-radius:calc(var(--radius) + 8px); background:color-mix(in oklab, var(--card) 85%, transparent); box-shadow:var(--shadow); }
+.support-feedback .section-head{ text-align:center; max-width:640px; margin:0 auto 24px; }
+.support-feedback .section-head p{ margin:10px auto 0; color:var(--muted); }
+.support-feedback .actions{ display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; }
+.support-feedback .actions .btn{ min-width:220px; justify-content:center; }
 .shot.is-video-preview::after{
   content:"\f04b";
   font-family:"Font Awesome 6 Free";

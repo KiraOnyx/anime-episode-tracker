@@ -22,6 +22,10 @@
     doc.querySelectorAll("[data-href]").forEach((el) => {
       const key = el.getAttribute("data-href");
       if (!key) return;
+      const parentSection = el.closest("section[data-hide-when-empty]");
+      if (parentSection) {
+        parentSection.dataset.hasDynamicChildren = "true";
+      }
       const url = normaliseUrl(APP_URLS[key]);
       if (!url) {
         if (el.hasAttribute("data-hide-when-empty")) {
@@ -45,6 +49,18 @@
         }
       }
     });
+
+    doc
+      .querySelectorAll("section[data-hide-when-empty][data-has-dynamic-children='true']")
+      .forEach((section) => {
+        if (!section.isConnected) return;
+        const interactive = section.querySelector(
+          ".btn[href], a[href], button, [role='button'], .btn[role], [tabindex]:not([tabindex='-1'])"
+        );
+        if (!interactive) {
+          section.remove();
+        }
+      });
   };
 
   const ensureMeta = (property, value) => {
