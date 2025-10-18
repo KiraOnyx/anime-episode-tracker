@@ -8,6 +8,7 @@
   const translations = {
     fr: {
       brand_title: "Anime Episode Tracker",
+      nav_primary: "Navigation principale",
       nav_home: "Accueil",
       nav_roadmap: "Roadmap",
       nav_privacy: "Confidentialité des données",
@@ -58,8 +59,11 @@
       footer_install: "Installer",
       footer_feedback: "Signaler un bug",
       footer_note: "Anime Episode Tracker — Non affilié à VoirAnime/MAL",
+      footer_disclaimer: "Non affilié à VoirAnime/MyAnimeList",
       support_title: "Besoin d’un coup de main ?",
       support_intro: "Vous avez repéré un comportement suspect ou souhaitez un audit plus détaillé ? Dites-le nous en quelques clics.",
+      support_intro_simple:
+        "Vous avez repéré un comportement suspect ou des idées d’amélioration ? Dites-le nous en quelques minutes en remplissant le formulaire adéquat.",
       support_cta_bug: "Signalement de bug",
       support_cta_ideas: "Suggestions & améliorations",
       support_cta_bug_label: "Ouvrir le formulaire de signalement de bug",
@@ -164,6 +168,7 @@
     },
     en: {
       brand_title: "Anime Episode Tracker",
+      nav_primary: "Primary navigation",
       nav_home: "Home",
       nav_roadmap: "Roadmap",
       nav_privacy: "Data privacy",
@@ -214,8 +219,11 @@
       footer_install: "Install",
       footer_feedback: "Report a bug",
       footer_note: "Anime Episode Tracker — Not affiliated with VoirAnime/MAL",
+      footer_disclaimer: "Not affiliated with VoirAnime/MyAnimeList",
       support_title: "Need a hand?",
       support_intro: "Spotted something odd or want a deeper audit? Let us know in a few clicks.",
+      support_intro_simple:
+        "Spotted a suspicious behavior or have improvement ideas? Tell us in a few minutes by filling the appropriate form.",
       support_cta_bug: "Report a bug",
       support_cta_ideas: "Suggestions & improvements",
       support_cta_bug_label: "Open the bug report form",
@@ -323,6 +331,20 @@
   const format = (text = "") => text.replace(/{{(\w+)}}/g, (_, key) => dynamicValues[key] ?? "");
   let currentLang = fallbackLang;
 
+  const updateLanguageControls = (lang) => {
+    document.querySelectorAll("[data-lang-switcher]").forEach(select => {
+      if (select.value !== lang) {
+        select.value = lang;
+      }
+    });
+
+    document.querySelectorAll(".lang-item[data-lang]").forEach(button => {
+      const isActive = button.dataset.lang === lang;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  };
+
   const applyTranslations = (lang) => {
     const dict = translations[lang] || translations[fallbackLang];
     document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -347,12 +369,24 @@
     document.documentElement.lang = lang;
     localStorage.setItem(storageKey, lang);
     currentLang = lang;
+    updateLanguageControls(lang);
+
+    const changeLanguage = (value) => {
+      const target = translations[value] ? value : fallbackLang;
+      if (target === currentLang) {
+        updateLanguageControls(target);
+        return;
+      }
+      applyTranslations(target);
+    };
+
     window.AET_I18N = {
       t(key) {
         const table = translations[currentLang] || translations[fallbackLang];
         return format(table?.[key] ?? "");
       },
-      lang: currentLang
+      lang: currentLang,
+      setLang: changeLanguage
     };
     document.dispatchEvent(new CustomEvent("lang:changed", { detail: { lang } }));
   };
@@ -364,10 +398,8 @@
       select.value = initial;
       select.addEventListener("change", (event) => {
         const value = event.target.value;
-        applyTranslations(translations[value] ? value : fallbackLang);
-        document.querySelectorAll("[data-lang-switcher]").forEach(other => {
-          if (other !== select) other.value = value;
-        });
+        const target = translations[value] ? value : fallbackLang;
+        applyTranslations(target);
       });
     });
 
