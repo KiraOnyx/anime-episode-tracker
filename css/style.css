@@ -30,10 +30,11 @@ a:hover{ text-decoration:underline; }
 .nav-actions{ display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; }
 .nav-links{ justify-content:flex-end; }
 .nav a.is-active{ color:var(--accent); }
+.nav-lang .lang-code { margin-left:.4rem; font-weight:600; letter-spacing:.02em; opacity:.9 }
 .nav .brand .app-logo {
-  border-radius: 14px; overflow: hidden; display:inline-block;
-  box-shadow: 0 0 0 1px var(--surface-2) inset;
-  width:32px; height:32px; object-fit: cover; vertical-align: middle;
+  width:32px; height:32px; object-fit: contain; display:inline-block;
+  border:none; border-radius:0; box-shadow:none; background:transparent;
+  vertical-align:middle;
 }
 .nav .brand .brand-name { margin-left:.5rem; }
 .nav-lang{ position:relative; }
@@ -53,9 +54,8 @@ a:hover{ text-decoration:underline; }
 .nav-lang .lang-item:focus-visible,
 .nav-lang .lang-item:hover{ outline:none; background:color-mix(in oklab, var(--accent) 18%, transparent); }
 .nav-lang .lang-item.is-active{ color:var(--accent); }
-.nav-lang .flag { border-radius: 2px; margin-right: .5rem; box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset; }
 .dropdown .menu[hidden]{ display:none !important; }
-.btn.icon{ width:42px; height:42px; padding:0; justify-content:center; }
+.btn.icon{ min-width:42px; height:42px; padding:0 12px; justify-content:center; }
 .btn.icon i{ margin:0; }
 .sr-only{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
@@ -112,6 +112,15 @@ a:hover{ text-decoration:underline; }
     var(--card);
 }
 .btn.ghost{ background:transparent; box-shadow:none; }
+
+/* Séparateur avant footer */
+.footer-sep {
+  width: min(1040px, 92%);
+  margin: 2.25rem auto 1rem;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.12), transparent);
+}
 
 .hero{ padding:64px 0 30px; text-align:center; }
 .h1{ font-size:clamp(32px,5.5vw,52px); font-weight:900; letter-spacing:-.02em; margin:0 0 10px; }

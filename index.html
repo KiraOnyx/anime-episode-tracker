@@ -38,19 +38,12 @@
             <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
             <div class="nav-lang dropdown">
               <button class="btn icon" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Langue" data-i18n="lang_switch_label" data-i18n-attr="aria-label">
-                <i class="fa-solid fa-earth-europe" aria-hidden="true"></i>
+                <i class="fa-solid fa-language"></i>
+                <span id="lang-code" class="lang-code" aria-hidden="true">FR</span>
               </button>
-              <ul class="menu" role="menu" aria-labelledby="lang-toggle" hidden>
-                <li role="menuitem">
-                  <button class="lang-item" type="button" data-lang="fr" aria-label="Français" data-i18n="lang_option_fr" data-i18n-attr="aria-label">
-                    <img src="assets/flags/fr.svg" width="18" height="12" alt="" class="flag"> <span data-i18n="lang_option_fr">Français</span>
-                  </button>
-                </li>
-                <li role="menuitem">
-                  <button class="lang-item" type="button" data-lang="en" aria-label="English" data-i18n="lang_option_en" data-i18n-attr="aria-label">
-                    <img src="assets/flags/en.svg" width="18" height="12" alt="" class="flag"> <span data-i18n="lang_option_en">English</span>
-                  </button>
-                </li>
+              <ul class="menu" role="menu" aria-labelledby="lang-toggle">
+                <li role="menuitem"><button class="lang-item" data-lang="fr" data-i18n="lang_option_fr">Français</button></li>
+                <li role="menuitem"><button class="lang-item" data-lang="en" data-i18n="lang_option_en">English</button></li>
               </ul>
             </div>
           </div>
@@ -165,7 +158,7 @@
     <header class="section-head">
       <h2 id="support-title"><i class="fa-solid fa-circle-info"></i> <span data-i18n="support_title">Besoin d’un coup de main ?</span></h2>
       <p data-i18n="support_intro_simple">
-        Vous avez repéré un comportement suspect ou des idées d’amélioration ? Dites-le nous en quelques minutes en remplissant le formulaire adéquat.
+        Vous avez repéré un comportement suspect ou que tu as des idées d’amélioration ? Dites-le nous en quelques minutes en remplissant le formulaire adéquat.
       </p>
     </header>
     <div class="actions">
@@ -182,6 +175,7 @@
     </div>
   </section>
 
+  <hr class="footer-sep" aria-hidden="true">
   <footer class="site-footer">
     <p>
       <span>© </span><time id="copyright-year" aria-label="Année en cours">2025</time>

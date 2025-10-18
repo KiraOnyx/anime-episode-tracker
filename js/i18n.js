@@ -63,7 +63,7 @@
       support_title: "Besoin d’un coup de main ?",
       support_intro: "Vous avez repéré un comportement suspect ou souhaitez un audit plus détaillé ? Dites-le nous en quelques clics.",
       support_intro_simple:
-        "Vous avez repéré un comportement suspect ou des idées d’amélioration ? Dites-le nous en quelques minutes en remplissant le formulaire adéquat.",
+        "Vous avez repéré un comportement suspect ou que tu as des idées d’amélioration ? Dites-le nous en quelques minutes en remplissant le formulaire adéquat.",
       support_cta_bug: "Signalement de bug",
       support_cta_ideas: "Suggestions & améliorations",
       support_cta_bug_label: "Ouvrir le formulaire de signalement de bug",
@@ -223,7 +223,7 @@
       support_title: "Need a hand?",
       support_intro: "Spotted something odd or want a deeper audit? Let us know in a few clicks.",
       support_intro_simple:
-        "Spotted a suspicious behavior or have improvement ideas? Tell us in a few minutes by filling the appropriate form.",
+        "Spotted suspicious behavior or have improvement ideas? Tell us in a few minutes by filling the appropriate form.",
       support_cta_bug: "Report a bug",
       support_cta_ideas: "Suggestions & improvements",
       support_cta_bug_label: "Open the bug report form",

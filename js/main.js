@@ -3,6 +3,29 @@
   const APP_URLS = window.APP_URLS || {};
   const MEDIA = window.MEDIA_MANIFEST || {};
 
+  const getActiveLang = () => {
+    const i18n = window.AET_I18N;
+    if (i18n) {
+      if (typeof i18n.lang === "string") return i18n.lang;
+      if (typeof i18n.getLang === "function") {
+        try {
+          const value = i18n.getLang();
+          if (value) return value;
+        } catch (error) {
+          console.warn("[i18n] failed to read lang", error);
+        }
+      }
+    }
+    return doc.documentElement.getAttribute("lang") || "fr";
+  };
+
+  const updateLangIndicator = () => {
+    const span = doc.getElementById("lang-code");
+    if (!span) return;
+    const code = (getActiveLang() || "fr").slice(0, 2).toUpperCase();
+    span.textContent = code;
+  };
+
   const translate = (key) => {
     try {
       if (window.AET_I18N && typeof window.AET_I18N.t === "function") {
@@ -457,6 +480,7 @@
       const value = button.dataset.lang;
       if (value && window.AET_I18N && typeof window.AET_I18N.setLang === "function") {
         window.AET_I18N.setLang(value);
+        updateLangIndicator();
       }
       close();
       toggle.focus({ preventScroll: true });
@@ -469,6 +493,7 @@
     });
 
     setOpen(false);
+    updateLangIndicator();
   };
 
   const init = () => {
@@ -479,6 +504,8 @@
     initProviderPanel();
     updateFooterYear();
     initLanguageDropdown();
+    updateLangIndicator();
+    doc.addEventListener("lang:changed", updateLangIndicator);
   };
 
   if (doc.readyState === "loading") {
@@ -491,7 +518,7 @@
 })();
 
 (function setActiveNav(){
-  const path = location.pathname.split("/").pop() || "index.html";
+  const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   const map = { "index.html": "nav-home", "privacy.html": "nav-privacy" };
   const id = map[path];
   if (id) {
