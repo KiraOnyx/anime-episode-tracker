@@ -28,9 +28,9 @@
         </div>
       </div>
       <nav class="nav">
-        <a class="btn ghost" href="roadmap.html"><i class="fa-solid fa-road"></i> <span data-i18n="nav_roadmap">Roadmap</span></a>
+        <a class="btn ghost" data-href="roadmap" data-hide-when-empty><i class="fa-solid fa-road"></i> <span data-i18n="nav_roadmap">Roadmap</span></a>
         <a class="btn ghost" href="privacy.html"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav_privacy">Confidentialité des données</span></a>
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
         <label class="lang-switch">
           <span class="sr-only" data-i18n="lang_switch_label">Langue</span>
           <select data-lang-switcher>
@@ -46,11 +46,10 @@
     <h1 class="h1" data-i18n="hero_title">Ne ratez plus aucun épisode.</h1>
     <p class="sub" data-i18n="hero_sub">L’extension repère les nouveaux épisodes en VF et VOSTFR et vous prévient en quelques secondes. Pas de réglages compliqués : ouvrez vos sites habituels et suivez votre liste.</p>
     <div class="cta">
-      <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="hero_cta_install">Installer sur Chrome</span></a>
-      <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> <span data-i18n="hero_cta_feedback">Signaler un bug</span></a>
-      <!-- Masqués si vides (config.js) -->
-      <a class="btn ghost" data-href="github" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-      <a class="btn ghost" data-href="discord" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Discord</a>
+      <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="hero_cta_install">Installer sur Chrome</span></a>
+      <a class="btn" data-href="feedback_form" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="hero_cta_feedback">Signaler un bug</span></a>
+      <a class="btn ghost" data-href="github" data-hide-when-empty><i class="fa-brands fa-github"></i> GitHub</a>
+      <a class="btn ghost" data-href="discord" data-hide-when-empty><i class="fa-brands fa-discord"></i> Discord</a>
     </div>
     <p class="note" data-i18n="hero_note">Zéro tracking • Données en local</p>
   </div>
@@ -131,136 +130,35 @@
     <div class="wrap">
       <h2 data-i18n="preview_title">Aperçus</h2>
       <div class="shots">
-        <div id="shot_popup" class="shot">Popup</div>
-        <div id="shot_inject" class="shot">Injection</div>
-        <div id="shot_settings" class="shot">Paramètres</div>
-        <div id="shot_notify" class="shot">Notification</div>
+        <div id="shot_popup" class="shot"></div>
+        <div id="shot_inject" class="shot"></div>
+        <div id="shot_settings" class="shot"></div>
+        <div id="shot_notify" class="shot"></div>
       </div>
-      <p class="note" data-i18n="preview_note">Remplace ces cadres par tes captures via <code>js/media-manifest.js</code>.</p>
     </div>
   </section>
 
   <section class="reviews">
     <div class="wrap">
-      <div class="cws-reviews" aria-live="polite" data-source="mock">
-        <div class="cws-reviews__metrics" role="status">
-          <div class="cws-reviews__metrics-grid">
-            <article class="cws-reviews__metric-card" aria-label="Note moyenne 4,8 sur 5">
-              <div class="cws-reviews__metric-head">
-                <i class="cws-reviews__metric-icon fa-solid fa-star" aria-hidden="true"></i>
-                <span class="cws-reviews__metric-label">Note moyenne</span>
-              </div>
-              <div class="cws-reviews__metric-value">
-                <span class="cws-reviews__metric-number">4,8</span>
-                <span class="cws-reviews__metric-suffix">/5</span>
-              </div>
-              <div class="cws-reviews__metric-stars" aria-hidden="true">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half-stroke"></i>
-              </div>
-            </article>
-            <article class="cws-reviews__metric-card" aria-label="3 620 utilisateurs">
-              <div class="cws-reviews__metric-head">
-                <i class="cws-reviews__metric-icon fa-solid fa-user-group" aria-hidden="true"></i>
-                <span class="cws-reviews__metric-label">Utilisateurs</span>
-              </div>
-              <div class="cws-reviews__metric-value">
-                <span class="cws-reviews__metric-number">3 620</span>
-              </div>
-            </article>
-            <article class="cws-reviews__metric-card" aria-label="128 avis">
-              <div class="cws-reviews__metric-head">
-                <i class="cws-reviews__metric-icon fa-solid fa-comments" aria-hidden="true"></i>
-                <span class="cws-reviews__metric-label">Avis</span>
-              </div>
-              <div class="cws-reviews__metric-value">
-                <span class="cws-reviews__metric-number">128</span>
-              </div>
-            </article>
-          </div>
-          <p class="cws-reviews__mock-notice">Données de démonstration affichées en attendant la publication sur le Chrome Web Store.</p>
-        </div>
-        <div class="cws-reviews__intro">
-          <h2>Ce que disent nos utilisateurs</h2>
-          <p>Les derniers avis du Chrome Web Store, mis à jour chaque lundi à 00h00.</p>
-        </div>
-        <div class="cws-reviews__content">
-          <div class="cws-reviews__list" role="list">
-            <article class="cws-reviews__card" role="listitem" aria-label="Avis 5 étoiles du 18/03/24">
-              <div class="cws-reviews__card-header">
-                <div class="cws-reviews__card-stars" aria-hidden="true">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <time class="cws-reviews__card-date" datetime="2024-03-18">18/03/24</time>
-              </div>
-              <p class="cws-reviews__card-body">Extension super pratique : je vois en un clin d'oeil les épisodes manquants, et les alertes VF arrivent très vite.</p>
-              <p class="cws-reviews__card-author">
-                <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
-                Utilisateur vérifié
-              </p>
-            </article>
-            <article class="cws-reviews__card" role="listitem" aria-label="Avis 4 étoiles du 11/03/24">
-              <div class="cws-reviews__card-header">
-                <div class="cws-reviews__card-stars" aria-hidden="true">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                </div>
-                <time class="cws-reviews__card-date" datetime="2024-03-11">11/03/24</time>
-              </div>
-              <p class="cws-reviews__card-body">Interface propre et facile à comprendre. J'aimerais juste pouvoir filtrer par langue, sinon rien à redire.</p>
-              <p class="cws-reviews__card-author">
-                <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
-                Utilisateur vérifié
-              </p>
-            </article>
-            <article class="cws-reviews__card" role="listitem" aria-label="Avis 5 étoiles du 05/03/24">
-              <div class="cws-reviews__card-header">
-                <div class="cws-reviews__card-stars" aria-hidden="true">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <time class="cws-reviews__card-date" datetime="2024-03-05">05/03/24</time>
-              </div>
-              <p class="cws-reviews__card-body">Depuis que je l'utilise, je ne rate plus les sorties VoirAnime. Le badge +N est devenu indispensable.</p>
-              <p class="cws-reviews__card-author">
-                <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
-                Utilisateur vérifié
-              </p>
-            </article>
-          </div>
-        </div>
-      </div>
+      <section class="cws-reviews" aria-live="polite" data-source="live" data-hide-when-empty></section>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
       <div class="cta" style="justify-content:center;">
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
-        <a class="btn" data-href="feedback_form" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> <span data-i18n="footer_feedback">Signaler un bug</span></a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
+        <a class="btn" data-href="feedback_form" data-hide-when-empty><i class="fa-solid fa-bug"></i> <span data-i18n="footer_feedback">Signaler un bug</span></a>
       </div>
       <p class="note">© <span id="y"></span> <span data-i18n="footer_note">Anime Episode Tracker — Non affilié à VoirAnime/MAL</span></p>
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/media-manifest.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/provider-media.js"></script>
-  <script src="js/main.js"></script>
-  <script type="module" src="components/cws-reviews.js"></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/media-manifest.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/provider-media.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="components/cws-reviews.js" defer></script>
 </body>
 </html>

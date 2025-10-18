@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main" data-i18n="skip_to_content"></a>
   <header class="top">
     <div class="wrap bar">
       <div class="brand">
@@ -24,7 +25,7 @@
       <nav class="nav">
         <a class="btn ghost" href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Accueil</span></a>
         <a class="btn ghost" href="privacy.html"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav_privacy">Confidentialité des données</span></a>
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="nav_install">Installer</span></a>
         <label class="lang-switch">
           <span class="sr-only" data-i18n="lang_switch_label">Langue</span>
           <select data-lang-switcher>
@@ -36,45 +37,30 @@
     </div>
   </header>
 
-  <section class="road-visual">
-    <div class="wrap section-narrow">
-      <h1 class="h1" data-i18n="roadmap_title">Ce qui arrive</h1>
-      <p class="road-lead" data-i18n="roadmap_intro">Une vue claire sur les fonctionnalités en cours, celles qui arrivent ensuite et les idées sur lesquelles nous itérons.</p>
-      <div class="road-legend">
-        <span><span class="dot dot-now"></span> <span data-i18n="roadmap_legend_now">Now</span></span>
-        <span><span class="dot dot-next"></span> <span data-i18n="roadmap_legend_next">Next</span></span>
-        <span><span class="dot dot-later"></span> <span data-i18n="roadmap_legend_later">Later</span></span>
+  <main id="main" role="main">
+    <section class="roadmap-soon">
+      <div class="wrap">
+        <div class="roadmap-soon__card">
+          <i class="fa-solid fa-road" aria-hidden="true"></i>
+          <h1 class="h1" data-i18n="roadmap_title_soon">Roadmap bientôt disponible</h1>
+          <p class="roadmap-soon__lead" data-i18n="roadmap_intro_soon">Nous finalisons actuellement la roadmap publique. Revenez prochainement pour découvrir les prochaines étapes.</p>
+        </div>
       </div>
-      <div class="road-filters" data-road-filters>
-        <button class="chip is-active" type="button" data-road-filter="all"><span data-i18n="roadmap_filter_all">Tout</span></button>
-        <button class="chip" type="button" data-road-filter="now"><span data-i18n="roadmap_filter_now">Now</span></button>
-        <button class="chip" type="button" data-road-filter="next"><span data-i18n="roadmap_filter_next">Next</span></button>
-        <button class="chip" type="button" data-road-filter="later"><span data-i18n="roadmap_filter_later">Later</span></button>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <div class="road-grid" data-roadmap-grid></div>
-      <div class="road-empty" data-roadmap-empty hidden>
-        <p data-i18n="roadmap_empty">Le chargement de la roadmap a échoué. Réessayez dans quelques instants.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="wrap">
       <div class="cta" style="justify-content:center;">
-        <a class="btn primary" data-href="webstore" data-hide-when-empty target="_blank" rel="noopener"><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
+        <a class="btn primary" data-href="webstore" data-hide-when-empty><i class="fa-brands fa-chrome"></i> <span data-i18n="footer_install">Installer</span></a>
       </div>
       <p class="note">© <span id="y"></span> <span data-i18n="footer_note">Anime Episode Tracker — Non affilié à VoirAnime/MAL</span></p>
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/media-manifest.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/provider-media.js"></script>
-  <script src="js/roadmap.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/media-manifest.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

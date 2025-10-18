@@ -13,67 +13,113 @@
   }
 
   function createLightbox() {
+    if (window.MEDIA_LIGHTBOX && typeof window.MEDIA_LIGHTBOX.open === "function") {
+      return window.MEDIA_LIGHTBOX;
+    }
+
     const overlay = document.createElement("div");
     overlay.className = "media-lightbox";
     overlay.innerHTML = `
-      <div class="media-lightbox__inner">
-        <button class="media-lightbox__close" type="button" aria-label="Close">✕</button>
+      <div class="media-lightbox__inner" role="dialog" aria-modal="true">
+        <button class="media-lightbox__close" type="button">
+          <span class="sr-only"></span>
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
         <div class="media-lightbox__body"></div>
         <div class="media-lightbox__caption"></div>
       </div>
     `;
+
     const body = overlay.querySelector(".media-lightbox__body");
     const caption = overlay.querySelector(".media-lightbox__caption");
     const closeBtn = overlay.querySelector(".media-lightbox__close");
+    const srOnly = closeBtn.querySelector(".sr-only");
+    let previouslyFocused = null;
+
     const updateLabel = () => {
       const label = t("media_lightbox_close") || "Close";
+      srOnly.textContent = label;
       closeBtn.setAttribute("aria-label", label);
       closeBtn.title = label;
     };
+
     updateLabel();
+
+    const trapFocus = (event) => {
+      if (event.key !== "Tab") return;
+      const focusable = overlay.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
 
     const close = () => {
       overlay.classList.remove("is-open");
       document.body.classList.remove("has-lightbox");
       body.innerHTML = "";
       caption.textContent = "";
+      overlay.removeEventListener("keydown", trapFocus);
+      if (previouslyFocused && previouslyFocused.focus) {
+        previouslyFocused.focus({ preventScroll: true });
+      }
+      previouslyFocused = null;
     };
 
     closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", (event) => {
       if (event.target === overlay) close();
     });
+
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && overlay.classList.contains("is-open")) close();
+      if (event.key === "Escape" && overlay.classList.contains("is-open")) {
+        event.preventDefault();
+        close();
+      }
     });
+
+    document.addEventListener("lang:changed", updateLabel);
 
     document.body.appendChild(overlay);
 
-    return {
-      open({ type, src, title }) {
-        body.innerHTML = "";
-        const captionText = title || "";
-        if (type === "video") {
-          const video = document.createElement("video");
-          video.src = src;
-          video.controls = true;
-          video.autoplay = true;
-          video.muted = true;
-          video.loop = true;
-          video.playsInline = true;
-          body.appendChild(video);
-        } else {
-          const img = document.createElement("img");
-          img.src = src;
-          img.alt = title || "";
-          body.appendChild(img);
-        }
-        caption.textContent = captionText;
-        overlay.classList.add("is-open");
-        document.body.classList.add("has-lightbox");
-      },
-      updateLabel
+    const open = ({ type, src, title }) => {
+      if (!src) return;
+      body.innerHTML = "";
+      caption.textContent = title || "";
+      previouslyFocused = document.activeElement;
+
+      if (type === "video") {
+        const video = document.createElement("video");
+        video.src = src;
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        body.appendChild(video);
+      } else {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = title || "";
+        body.appendChild(img);
+      }
+
+      overlay.classList.add("is-open");
+      document.body.classList.add("has-lightbox");
+      overlay.addEventListener("keydown", trapFocus);
+      updateLabel();
+      closeBtn.focus({ preventScroll: true });
     };
+
+    const api = { open, updateLabel };
+    window.MEDIA_LIGHTBOX = api;
+    return api;
   }
 
   function normaliseName(file) {
