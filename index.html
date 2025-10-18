@@ -135,15 +135,17 @@
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <h2 data-i18n="preview_title">Aperçus</h2>
-      <div class="shots">
-        <div id="shot_popup" class="shot"></div>
-        <div id="shot_inject" class="shot"></div>
-        <div id="shot_settings" class="shot"></div>
-        <div id="shot_notify" class="shot"></div>
-      </div>
+  <section id="media-section" class="container" aria-labelledby="media-title">
+    <h2 id="media-title" data-i18n="media_title">Aperçus de l’extension</h2>
+
+    <div class="media-group" id="media-images" data-group="images" data-hide-when-empty>
+      <h3><i class="fa-solid fa-image"></i> <span data-i18n="media_images">Captures d’écran</span></h3>
+      <div class="media-grid" role="list"></div>
+    </div>
+
+    <div class="media-group" id="media-videos" data-group="videos" data-hide-when-empty>
+      <h3><i class="fa-solid fa-video"></i> <span data-i18n="media_videos">Vidéos de démonstration</span></h3>
+      <div class="media-grid" role="list"></div>
     </div>
   </section>
 

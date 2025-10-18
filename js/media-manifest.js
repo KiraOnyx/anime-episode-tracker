@@ -1,27 +1,23 @@
-(function () {
-  const manifest = {
-    // Mettre à jour ce fichier pour changer toutes les images du site.
-    previews: {
-      // Déposez vos captures dans assets/previews/ puis renseignez les chemins ci-dessous.
-      popup: "",
-      injection: "Import.mp4",
-      settings: "",
-      notification: ""
-    },
-    providers: {
-      VoirAnime: {
-        videos: [],
-        images: [
-          "1-Demon_Slayer.png",
-          "2-Demon_Slayer.png"
-        ]
-      }
+window.MEDIA_MANIFEST = {
+  previews: [
+    { src: "assets/previews/Page_pincipal.png", alt: "Accueil extension" },
+    { src: "assets/previews/Parametre.png", alt: "Page des paramètres" },
+    { src: "assets/previews/Import_card.mkv", alt: "Ajout automatique d’épisodes", type: "video" },
+    { src: "assets/previews/scroll_DnD.mkv", alt: "DnD des cartes", type: "video" },
+    { src: "assets/previews/Tutoriel.mkv", alt: "Tutoriel de l'extension", type: "video" }
+  ],
+  providers: {
+    VoirAnime: {
+      videos: [],
+      images: [
+        "1-Demon_Slayer.png",
+        "2-Demon_Slayer.png"
+      ]
     }
-  };
+  }
+};
 
-  window.MEDIA_MANIFEST = manifest;
-  window.PROVIDER_MEDIA_MANIFESTS = Object.assign(
-    window.PROVIDER_MEDIA_MANIFESTS || {},
-    manifest.providers || {}
-  );
-})();
+window.PROVIDER_MEDIA_MANIFESTS = Object.assign(
+  window.PROVIDER_MEDIA_MANIFESTS || {},
+  window.MEDIA_MANIFEST.providers || {}
+);
