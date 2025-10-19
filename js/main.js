@@ -273,49 +273,89 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgGroup = document.querySelector("#media-images .media-grid");
   const vidGroup = document.querySelector("#media-videos .media-grid");
 
+  const isActivationKey = (key) => key === "Enter" || key === " " || key === "Spacebar" || key === "Space";
+
   manifest.forEach(item => {
     const ext = item.src.split(".").pop().toLowerCase();
     const isVideo = item.type === "video" || /(mp4|mkv|webm)$/.test(ext);
     const group = isVideo ? vidGroup : imgGroup;
     if (!group) return;
 
-    const el = document.createElement(isVideo ? "video" : "img");
-    el.src = item.src;
-    el.alt = item.alt || "";
-    el.setAttribute("aria-label", item.alt || item.src);
-    el.className = "media-item";
-    el.loading = "lazy";
+    const shot = document.createElement("div");
+    shot.className = "shot";
+    shot.dataset.kind = isVideo ? "video" : "image";
+    shot.setAttribute("role", "listitem");
+
+    const media = document.createElement(isVideo ? "video" : "img");
+    media.src = item.src;
+    media.className = "media-item";
+
+    const mediaTitle = item.alt || item.src;
+
+    const openLightbox = () => {
+      const type = isVideo ? "video" : "image";
+      window.MEDIA_LIGHTBOX?.open?.({ type, src: item.src, title: item.alt || "" });
+    };
 
     if (isVideo) {
-      el.muted = true;
-      el.loop = true;
-      el.playsInline = true;
-      el.preload = "metadata";
-      el.tabIndex = 0;
-      const stopVideo = () => { el.pause(); el.currentTime = 0; };
-      el.addEventListener("mouseenter", () => el.play());
-      el.addEventListener("focus", () => el.play());
-      el.addEventListener("mouseleave", stopVideo);
-      el.addEventListener("blur", stopVideo);
-      el.addEventListener("click", () => {
-        stopVideo();
-        window.MEDIA_LIGHTBOX?.open?.({ type: "video", src: item.src, title: item.alt });
+      media.muted = true;
+      media.loop = true;
+      media.playsInline = true;
+      media.preload = "metadata";
+      media.tabIndex = 0;
+      media.setAttribute("role", "button");
+      media.setAttribute("aria-label", mediaTitle);
+
+      const stopVideo = () => {
+        media.pause();
+        media.currentTime = 0;
+        shot.classList.remove("is-playing");
+      };
+
+      const startVideo = () => {
+        shot.classList.add("is-playing");
+        const promise = media.play();
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {});
+        }
+      };
+
+      media.addEventListener("mouseenter", startVideo);
+      media.addEventListener("mouseleave", stopVideo);
+      media.addEventListener("focus", startVideo);
+      media.addEventListener("blur", stopVideo);
+      media.addEventListener("pause", () => {
+        if (!media.matches(":hover") && document.activeElement !== media) {
+          shot.classList.remove("is-playing");
+        }
       });
-      el.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") return;
+      media.addEventListener("click", () => {
+        stopVideo();
+        openLightbox();
+      });
+      media.addEventListener("keydown", (event) => {
+        if (!isActivationKey(event.key)) return;
         event.preventDefault();
         stopVideo();
-        window.MEDIA_LIGHTBOX?.open?.({ type: "video", src: item.src, title: item.alt });
+        openLightbox();
       });
     } else {
-      el.addEventListener("click", () => window.MEDIA_LIGHTBOX?.open?.({ type: "image", src: item.src, title: item.alt }));
+      media.alt = item.alt || "";
+      media.loading = "lazy";
+      media.decoding = "async";
+      media.tabIndex = 0;
+      media.setAttribute("role", "button");
+      media.setAttribute("aria-label", mediaTitle);
+      media.addEventListener("click", openLightbox);
+      media.addEventListener("keydown", (event) => {
+        if (!isActivationKey(event.key)) return;
+        event.preventDefault();
+        openLightbox();
+      });
     }
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "shot";
-    wrapper.setAttribute("role", "listitem");
-    wrapper.appendChild(el);
-    group.appendChild(wrapper);
+    shot.appendChild(media);
+    group.appendChild(shot);
   });
 
   document.querySelectorAll(".media-group").forEach(g => {
