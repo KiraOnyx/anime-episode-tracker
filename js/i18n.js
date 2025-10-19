@@ -55,6 +55,11 @@
       media_sub: "Un aperçu rapide de l’extension : captures d’écran et mini-démos vidéo.",
       media_images: "Captures d’écran",
       media_videos: "Vidéos de démonstration",
+      media_cap_home: "Accueil de l’extension — cartes et actions",
+      media_cap_settings: "Paramètres — scans, langue et options avancées",
+      media_cap_import: "Import automatique — fusion des épisodes",
+      media_cap_scroll: "Glisser-déposer — réorganiser vos séries",
+      media_cap_tutorial: "Tutoriel guidé — prise en main rapide",
       footer_install: "Installer",
       footer_feedback: "Signaler un bug",
       footer_note: "Anime Episode Tracker — Non affilié à VoirAnime/MAL",
@@ -201,6 +206,11 @@
       media_sub: "A quick peek at the extension: screenshots and mini demo videos.",
       media_images: "Screenshots",
       media_videos: "Demo videos",
+      media_cap_home: "Extension home — cards and quick actions",
+      media_cap_settings: "Settings — scans, language, advanced options",
+      media_cap_import: "Automatic import — merge your episodes",
+      media_cap_scroll: "Drag & drop — reorder your shows",
+      media_cap_tutorial: "Guided tutorial — get started fast",
       features_title: "Features",
       feature_alerts_title: "Instant alerts",
       feature_alerts_desc: "Get notified as soon as a new VF or VOSTFR episode drops. You instantly know what to watch.",
@@ -328,6 +338,23 @@
 
   const format = (text = "") => text.replace(/{{(\w+)}}/g, (_, key) => dynamicValues[key] ?? "");
   let currentLang = fallbackLang;
+  const changeListeners = new Set();
+
+  const safeTranslate = (lang, key) => {
+    const table = translations[lang] || translations[fallbackLang];
+    return format(table?.[key] ?? "");
+  };
+
+  const notifyLanguageChange = (lang) => {
+    changeListeners.forEach(callback => {
+      try {
+        callback(lang);
+      } catch (error) {
+        console.error("[i18n] onChange callback failed", error);
+      }
+    });
+    document.dispatchEvent(new CustomEvent("lang:changed", { detail: { lang } }));
+  };
 
   const updateLanguageControls = (lang) => {
     document.querySelectorAll("[data-lang-switcher]").forEach(select => {
@@ -368,26 +395,41 @@
     localStorage.setItem(storageKey, lang);
     currentLang = lang;
     updateLanguageControls(lang);
-
-    const changeLanguage = (value) => {
-      const target = translations[value] ? value : fallbackLang;
-      if (target === currentLang) {
-        updateLanguageControls(target);
-        return;
-      }
-      applyTranslations(target);
-    };
-
-    window.AET_I18N = {
-      t(key) {
-        const table = translations[currentLang] || translations[fallbackLang];
-        return format(table?.[key] ?? "");
-      },
-      lang: currentLang,
-      setLang: changeLanguage
-    };
-    document.dispatchEvent(new CustomEvent("lang:changed", { detail: { lang } }));
+    notifyLanguageChange(lang);
   };
+
+  const setLanguage = (value) => {
+    const target = translations[value] ? value : fallbackLang;
+    if (target === currentLang) {
+      updateLanguageControls(target);
+      return;
+    }
+    applyTranslations(target);
+  };
+
+  const api = {
+    t(key) {
+      return safeTranslate(currentLang, key);
+    },
+    setLang: setLanguage,
+    getLang: () => currentLang,
+    onChange(callback) {
+      if (typeof callback !== "function") return () => {};
+      changeListeners.add(callback);
+      return () => changeListeners.delete(callback);
+    },
+    offChange(callback) {
+      if (typeof callback !== "function") return;
+      changeListeners.delete(callback);
+    }
+  };
+
+  Object.defineProperty(api, "lang", {
+    get: () => currentLang,
+    enumerable: true
+  });
+
+  window.AET_I18N = window.I18N = api;
 
   const init = () => {
     const stored = localStorage.getItem(storageKey);

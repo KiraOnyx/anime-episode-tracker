@@ -275,16 +275,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const isActivationKey = (key) => key === "Enter" || key === " " || key === "Spacebar" || key === "Space";
 
-  manifest.forEach(item => {
+  const renderCaption = (shot, item) => {
+    if (!shot || !item) return;
+    const hasKey = typeof item.caption_key === "string" && item.caption_key.trim() !== "";
+    const hasCaption = !hasKey && typeof item.caption === "string" && item.caption.trim() !== "";
+    const existing = shot.querySelector(".caption");
+
+    if (!hasKey && !hasCaption) {
+      if (existing) existing.remove();
+      return;
+    }
+
+    const api = window.I18N || window.AET_I18N;
+    let text = "";
+
+    if (hasKey && api && typeof api.t === "function") {
+      text = api.t(item.caption_key) || (typeof item.caption === "string" ? item.caption : "");
+    } else if (hasKey) {
+      text = typeof item.caption === "string" ? item.caption : "";
+    } else if (hasCaption) {
+      text = item.caption;
+    }
+
+    let captionEl = existing;
+    if (!text) {
+      if (captionEl) captionEl.remove();
+      return;
+    }
+
+    if (!captionEl) {
+      captionEl = document.createElement("figcaption");
+      captionEl.className = "caption";
+      shot.appendChild(captionEl);
+    }
+
+    captionEl.textContent = text;
+  };
+
+  manifest.forEach((item, index) => {
     const ext = item.src.split(".").pop().toLowerCase();
     const isVideo = item.type === "video" || /(mp4|mkv|webm)$/.test(ext);
     const group = isVideo ? vidGroup : imgGroup;
     if (!group) return;
 
-    const shot = document.createElement("div");
+    const shot = document.createElement("figure");
     shot.className = "shot";
     shot.dataset.kind = isVideo ? "video" : "image";
     shot.setAttribute("role", "listitem");
+    shot.dataset.manifestIndex = String(index);
+
+    const frame = document.createElement("div");
+    frame.className = "media-frame";
 
     const media = document.createElement(isVideo ? "video" : "img");
     media.src = item.src;
@@ -354,9 +395,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    shot.appendChild(media);
+    frame.appendChild(media);
+    shot.appendChild(frame);
+    renderCaption(shot, item);
     group.appendChild(shot);
   });
+
+  const refreshCaptions = () => {
+    document.querySelectorAll(".shot[data-manifest-index]").forEach((shotEl) => {
+      const idx = Number(shotEl.dataset.manifestIndex);
+      if (Number.isNaN(idx)) return;
+      const item = manifest[idx];
+      if (item) renderCaption(shotEl, item);
+    });
+  };
+
+  const i18nApi = window.I18N || window.AET_I18N;
+  if (i18nApi && typeof i18nApi.onChange === "function") {
+    i18nApi.onChange(refreshCaptions);
+  } else {
+    document.addEventListener("lang:changed", refreshCaptions);
+  }
 
   document.querySelectorAll(".media-group").forEach(g => {
     if (!g.querySelector(".shot")) g.remove();

@@ -9,7 +9,8 @@
   const kindLabels = new Set();
 
   function t(key) {
-    return (window.AET_I18N && typeof window.AET_I18N.t === "function") ? window.AET_I18N.t(key) : "";
+    const api = window.I18N || window.AET_I18N;
+    return (api && typeof api.t === "function") ? api.t(key) : "";
   }
 
   function createLightbox() {
@@ -21,7 +22,7 @@
     overlay.className = "media-lightbox";
     overlay.innerHTML = `
       <div class="media-lightbox__inner" role="dialog" aria-modal="true">
-        <button class="media-lightbox__close" type="button">
+        <button class="media-lightbox__close" type="button" data-close>
           <span class="sr-only"></span>
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
@@ -30,6 +31,7 @@
       </div>
     `;
 
+    const panel = overlay.querySelector(".media-lightbox__inner");
     const body = overlay.querySelector(".media-lightbox__body");
     const caption = overlay.querySelector(".media-lightbox__caption");
     const closeBtn = overlay.querySelector(".media-lightbox__close");
@@ -63,6 +65,12 @@
     };
 
     const close = () => {
+      if (!overlay.classList.contains("is-open")) return;
+      const activeVideo = body.querySelector("video");
+      if (activeVideo) {
+        activeVideo.pause();
+        activeVideo.currentTime = 0;
+      }
       overlay.classList.remove("is-open");
       document.body.classList.remove("has-lightbox");
       body.innerHTML = "";
@@ -74,9 +82,20 @@
       previouslyFocused = null;
     };
 
-    closeBtn.addEventListener("click", close);
+    closeBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      close();
+    });
+
+    panel.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
     overlay.addEventListener("click", (event) => {
-      if (event.target === overlay) close();
+      if (!panel.contains(event.target)) {
+        close();
+      }
     });
 
     document.addEventListener("keydown", (event) => {
@@ -86,7 +105,12 @@
       }
     });
 
-    document.addEventListener("lang:changed", updateLabel);
+    const i18n = window.I18N || window.AET_I18N;
+    if (i18n && typeof i18n.onChange === "function") {
+      i18n.onChange(updateLabel);
+    } else {
+      document.addEventListener("lang:changed", updateLabel);
+    }
 
     document.body.appendChild(overlay);
 
@@ -117,7 +141,7 @@
       closeBtn.focus({ preventScroll: true });
     };
 
-    const api = { open, updateLabel };
+    const api = { open, close, updateLabel };
     window.MEDIA_LIGHTBOX = api;
     return api;
   }
