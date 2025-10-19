@@ -4,7 +4,8 @@ window.APP_URLS = {
   // URL canonique du site vitrine. Laisser vide pour masquer l'élément associé.
   site_url: "https://example.tld",
   // URL de la fiche Chrome Web Store. Laisser vide pour masquer l'élément associé.
-  webstore: "",
+  webstore:
+    "https://chromewebstore.google.com/detail/anime-episode-tracker/djnoejmpkhckkcbkeoinhglpgiaoomdm",
   // Laisser vide pour masquer le bouton correspondant.
   feedback_bug:
     "https://docs.google.com/forms/d/e/1FAIpQLSeXYcogvkDpVi-28yQmt4tRyZ31pe87KHurAjB6QjukBIQr5g/viewform?usp=dialog",
